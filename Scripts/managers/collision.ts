@@ -1,8 +1,14 @@
 module managers {
     // COLLISION MANAGER CLASS
     export class Collision {
-        // PRIVATE INSTANCE VARIABLES
+        // PRIVATE INSTANCE VARIABLES +++++++++++++++++++++++
         private _player: objects.Player;
+        private _pointsLabel: objects.Label;
+        private _points = 0;
+        private _carHealthLabel: objects.Label;
+        private _carHealth = 100;
+        
+        // CONSTRUCTOR ++++++++++++++++
         constructor(player:objects.Player) {
             this._player = player;
         }
@@ -20,15 +26,43 @@ module managers {
             
             startPoint.x = this._player.x;
             startPoint.y = this._player.y;
-            //console.log(startPoint);
             
-            endPoint.x = object.centerX;
-            endPoint.y = object.centerY;
+            endPoint.x = object.centerX + object.x;
+            endPoint.y = object.centerY + object.y;
             
-            
+            /* check if the distance between the player and 
+              the other object is less than the minimum distance */
             if(this.distance(startPoint, endPoint) < minimumDistance) {
                 
-                console.log("Collision!");
+                // check if it's another car
+                if(object.name === "island") {
+                    // this._points ++;
+                    // console.log("Points: " + this._points);
+                    // this._pointsLabel = new objects.Label(
+                    //     this._points.toString(),
+                    //     "14px Consolas",
+                    //     "#ff0000", 
+                    //     426, 100, false);
+                    // this._pointsLabel.textAlign = "right";
+                    // this.addChild(this._pointsLabel);
+                    // return this._points;
+                    return true;
+                }
+                
+                // check if it's a gas tank
+                if(object.name === "blue_car") {
+                    // this._carHealth --;
+                    // console.log("Car Health: " + this._carHealth);
+                    // this._carHealthLabel = new objects.Label(
+                    //     this._carHealth.toString(),
+                    //     "14px Consolas",
+                    //     "#ff0000", 
+                    //     426, 100, false);
+                    // this._carHealthLabel.textAlign = "right";
+                    // this.addChild(this._carHealthLabel);
+                    // return this._carHealth;
+                    return true;
+                }
             }
         }
     }

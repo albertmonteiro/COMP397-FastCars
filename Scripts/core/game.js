@@ -24,6 +24,8 @@ var assetData = [
     { id: "green_car", src: "../../Assets/images/green_car.png" },
     { id: "yellow_car", src: "../../Assets/images/yellow_car.png" },
     { id: "player_car", src: "../../Assets/images/player_car.png" },
+    { id: "points", src: "../../Assets/images/points.png" },
+    { id: "car_health", src: "../../Assets/images/car_health.png" },
 ];
 function preload() {
     assets = new createjs.LoadQueue();
