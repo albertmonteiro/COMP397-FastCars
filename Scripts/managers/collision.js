@@ -26,30 +26,10 @@ var managers;
             if (this.distance(startPoint, endPoint) < minimumDistance) {
                 // check if it's another car
                 if (object.name === "island") {
-                    // this._points ++;
-                    // console.log("Points: " + this._points);
-                    // this._pointsLabel = new objects.Label(
-                    //     this._points.toString(),
-                    //     "14px Consolas",
-                    //     "#ff0000", 
-                    //     426, 100, false);
-                    // this._pointsLabel.textAlign = "right";
-                    // this.addChild(this._pointsLabel);
-                    // return this._points;
                     return true;
                 }
                 // check if it's a gas tank
                 if (object.name === "blue_car") {
-                    // this._carHealth --;
-                    // console.log("Car Health: " + this._carHealth);
-                    // this._carHealthLabel = new objects.Label(
-                    //     this._carHealth.toString(),
-                    //     "14px Consolas",
-                    //     "#ff0000", 
-                    //     426, 100, false);
-                    // this._carHealthLabel.textAlign = "right";
-                    // this.addChild(this._carHealthLabel);
-                    // return this._carHealth;
                     return true;
                 }
             }

@@ -21,18 +21,6 @@ var scenes;
             this._carHealth = 100;
             // Instantiate Cloud array
             this._clouds = new Array();
-            // // added car1 to the scene
-            // this._car1 = new objects.Car1();
-            // this.addChild(this._car1);
-            // // added car2 to the scene
-            // this._car2 = new objects.Car2();
-            // this.addChild(this._car2);
-            // // added car3 to the scene
-            // this._car3 = new objects.Car3();
-            // this.addChild(this._car3);
-            // // added car4 to the scene
-            // this._car4 = new objects.Car4();
-            // this.addChild(this._car4);
             // added ocean to the scene
             this._ocean = new objects.Ocean();
             this.addChild(this._ocean);
@@ -74,10 +62,6 @@ var scenes;
             this._ocean.update();
             this._island.update();
             this._player.update();
-            // this._car1.update();
-            // this._car2.update();
-            // this._car3.update();
-            // this._car4.update();
             // Check if the collision is with a Gas tank
             if (this._collision.check(this._island)) {
                 this._points++;
