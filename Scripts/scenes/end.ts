@@ -47,7 +47,7 @@ module scenes {
         
         // START_OVER Button click event handler
         private _restartButtonClick(event: createjs.MouseEvent) {
-            // Switch to the INTRO Scene
+            // Switch to the MENU Scene
             scene = config.Scene.MENU;
             changeScene();
         }

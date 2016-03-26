@@ -32,7 +32,7 @@ var scenes;
         //EVENT HANDLERS ++++++++++++++++++++
         // START_OVER Button click event handler
         End.prototype._restartButtonClick = function (event) {
-            // Switch to the INTRO Scene
+            // Switch to the MENU Scene
             scene = config.Scene.MENU;
             changeScene();
         };

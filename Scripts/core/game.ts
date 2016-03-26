@@ -27,6 +27,8 @@ var assetData:objects.Asset[] = [
     {id: "player_car", src:"../../Assets/images/player_car.png"},
     {id: "points", src:"../../Assets/images/points.png"},
     {id: "car_health", src:"../../Assets/images/car_health.png"},
+    {id: "gameover", src:"../../Assets/images/gameover.png"},
+    {id: "restart", src:"../../Assets/images/restart.png"},
 ];
 
 function preload() {

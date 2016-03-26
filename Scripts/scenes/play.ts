@@ -14,6 +14,9 @@ module scenes {
         private _points:number;
         private _carHealthLabel: objects.Label;
         private _carHealth: number;
+        private _gameoverImage: createjs.Bitmap;
+        private _finalPointsLabel: objects.Label;
+        private _restartPedal: createjs.Bitmap;
         
         // CONSTRUCTOR ++++++++++++++++++++++
         constructor() {
@@ -28,7 +31,7 @@ module scenes {
             // Set Cloud Count
             this._carCount = 4;
             this._points = 0;
-            this._carHealth = 100;
+            this._carHealth = 20;
             
             // Instantiate Cloud array
             this._cars = new Array<objects.Car>();
@@ -95,40 +98,87 @@ module scenes {
             
             // Check if the collision is with a Gas tank
             if (this._collision.check(this._gas)) {
-                this._points ++;
+                if (this._carHealth <= 0) {
+                    // Switch to the END Scene
+                    // scene = config.Scene.END;
+                    // changeScene();
+                    this.endOfGame();
+                }
+                else {
+                    this._points++;
+                    // Update Points label
+                    this.removeChild(this._pointsLabel);
+                    this._pointsLabel = new objects.Label(
+                        this._points.toString(),
+                        "14px Consolas",
+                        "#000000",
+                        570, 70, false);
+                    this._pointsLabel.textAlign = "right";
+                    this.addChild(this._pointsLabel);
+                }
             }
-            // Update Points label
-            this.removeChild(this._pointsLabel);
-            this._pointsLabel = new objects.Label(
-                this._points.toString(),
-                "14px Consolas",
-                "#000000",
-                570, 70, false);
-            this._pointsLabel.textAlign = "right";
-            this.addChild(this._pointsLabel);
             
             // Check if the collision is with another car
             this._cars.forEach(car => {
-                    car.update();
-                    if (this._collision.check(car)) {
-                        this._carHealth --;
+                car.update();
+                if (this._collision.check(car)) {
+                    if (this._carHealth <= 0) {
+                        // Switch to the END Scene
+                        // scene = config.Scene.END;
+                        // changeScene();
+                        this.endOfGame();
                     }
-                });
-            // Update Car Health label
-            this.removeChild(this._carHealthLabel);
-            this._carHealthLabel = new objects.Label(
-                this._carHealth.toString(),
-                "14px Consolas",
-                "#000000",
-                570, 390, false);
-            this._carHealthLabel.textAlign = "right";
-            this.addChild(this._carHealthLabel);
+                    else {
+                        this._carHealth--;
+                        // Update Car Health label
+                        this.removeChild(this._carHealthLabel);
+                        this._carHealthLabel = new objects.Label(
+                            this._carHealth.toString(),
+                            "14px Consolas",
+                            "#000000",
+                            570, 390, false);
+                        this._carHealthLabel.textAlign = "right";
+                        this.addChild(this._carHealthLabel);
+                    }
+                }
+            });
             
             // console.log("Points: " + this._points + " ,Car Health: " + this._carHealth);
         }
         
+        // PRIVATE METHODS +++++++++++++++++++++++++++
         
-        //EVENT HANDLERS ++++++++++++++++++++
+        private endOfGame(): void {
+            console.log("Game Over!");
+            this.removeChild(this._pointsLabel);
+            this.removeChild(this._carHealthLabel);
+            
+            // add the gameover image
+            this._gameoverImage = new objects.Button("gameover", 0, 0, false);
+            this.addChild(this._gameoverImage);
+            
+            // add the final score
+            this.removeChild(this._pointsLabel);
+            this._finalPointsLabel = new objects.Label(
+                this._points.toString(),
+                "40px Consolas",
+                "#000000",
+                350, 285, false);
+            this._finalPointsLabel.textAlign = "right";
+            this.addChild(this._finalPointsLabel);
+            
+            // add the restart pedal image
+            this._restartPedal = new objects.Button("restart", 500, 300, false);
+            this.addChild(this._restartPedal);
+            // restart button listner
+            this._restartPedal.on("click", this._restartPedalClick, this); 
+        }
+        
+        private _restartPedalClick(event: createjs.MouseEvent): void {
+            // Switch to the MENU Scene
+            scene = config.Scene.MENU;
+            changeScene();
+        }
         
     }
 }
