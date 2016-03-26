@@ -36,13 +36,13 @@ module managers {
                 
                 // check if it's another car
                 if(object.name === "gas") {
-                    console.log("Collision with gas tank!");
+                    // console.log("Collision with gas tank!");
                     return true;
                 }
                 
                 // check if it's a gas tank
                 if(object.name === "blue_car") {
-                    console.log("Collision with blue car!");
+                    // console.log("Collision with blue car!");
                     return true;
                 }
             }

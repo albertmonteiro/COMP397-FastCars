@@ -19,10 +19,16 @@ module scenes {
             this._backgroundImage = new createjs.Bitmap(assets.getResult("road"));
             this.addChild(this._backgroundImage);
             
+            // Play Background music
+            var audioFile = document.createElement("audio");
+            audioFile.src = "../../Assets/audio/background.mp3";
+            audioFile.loop = true;
+            audioFile.play();
+            
             //Add Menu Label
             this._menuLabel = new objects.Label(
                 "ARE YOU READY?", "60px Consolas",
-                "#000000",
+                "#ABABAB",
                 config.Screen.CENTER_X, config.Screen.CENTER_Y - 75, true);
             this.addChild(this._menuLabel);
             
@@ -50,8 +56,19 @@ module scenes {
         
         //EVENT HANDLERS ++++++++++++++++++++
         
-        // LEFT_CAVE Button click event handler
+        // Start button click event handler
         private _startButtonClick(event: createjs.MouseEvent) {
+            // Play Car Start sound
+            var audioFile = document.createElement("audio");
+            audioFile.src = "../../Assets/audio/car_start.mp3";
+            audioFile.play();
+            
+            // Play Background music 
+            // var audioFile = document.createElement("audio");
+            // audioFile.src = "../../Assets/audio/background.mp3";
+            // audioFile.loop = true;
+            // audioFile.play();
+            
             // Switch to the PLAY Scene
             scene = config.Scene.PLAY;
             changeScene();

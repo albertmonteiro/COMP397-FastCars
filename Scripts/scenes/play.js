@@ -25,13 +25,11 @@ var scenes;
             this._road = new objects.Road();
             this.addChild(this._road);
             // add the Points box the play scene
-            console.log("Adding points box!");
             this._pointsBox = new objects.Button("points", 484, 5, false);
             this.addChild(this._pointsBox);
             // add the Car Health box the play scene
-            console.log("Adding car health box!");
-            this._pointsBox = new objects.Button("car_health", 483, 323, false);
-            this.addChild(this._pointsBox);
+            this._carHealthBox = new objects.Button("car_health", 483, 323, false);
+            this.addChild(this._carHealthBox);
             // added island to the scene
             this._gas = new objects.Gas();
             this.addChild(this._gas);
@@ -68,6 +66,11 @@ var scenes;
                     this.endOfGame();
                 }
                 else {
+                    // Play Points sound
+                    var audioFile = document.createElement("audio");
+                    audioFile.src = "../../Assets/audio/gastank_point.mp3";
+                    audioFile.play();
+                    // Increment points variable
                     this._points++;
                     // Update Points label
                     this.removeChild(this._pointsLabel);
@@ -84,6 +87,11 @@ var scenes;
                         _this.endOfGame();
                     }
                     else {
+                        // Play car crash sound
+                        var audioFile = document.createElement("audio");
+                        audioFile.src = "../../Assets/audio/car_crash.mp3";
+                        audioFile.play();
+                        // Decrement car health variable
                         _this._carHealth--;
                         // Update Car Health label
                         _this.removeChild(_this._carHealthLabel);
@@ -97,7 +105,7 @@ var scenes;
         };
         // PRIVATE METHODS +++++++++++++++++++++++++++
         Play.prototype.endOfGame = function () {
-            console.log("Game Over!");
+            // console.log("Game Over!");
             this.removeChild(this._pointsLabel);
             this.removeChild(this._carHealthLabel);
             // add the gameover image
@@ -115,8 +123,12 @@ var scenes;
             this._restartPedal.on("click", this._restartPedalClick, this);
         };
         Play.prototype._restartPedalClick = function (event) {
-            // Switch to the MENU Scene
-            scene = config.Scene.MENU;
+            // Play Car Rev (restart) sound
+            var audioFile = document.createElement("audio");
+            audioFile.src = "../../Assets/audio/car_rev.mp3";
+            audioFile.play();
+            // Reset to the PLAY Scene
+            scene = config.Scene.PLAY;
             changeScene();
         };
         return Play;

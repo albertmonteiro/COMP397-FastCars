@@ -41,14 +41,12 @@ module scenes {
             this.addChild(this._road);
 
             // add the Points box the play scene
-            console.log("Adding points box!");
             this._pointsBox = new objects.Button("points", 484, 5, false);
             this.addChild(this._pointsBox);
             
             // add the Car Health box the play scene
-            console.log("Adding car health box!");
-            this._pointsBox = new objects.Button("car_health", 483, 323, false);
-            this.addChild(this._pointsBox);
+            this._carHealthBox = new objects.Button("car_health", 483, 323, false);
+            this.addChild(this._carHealthBox);
             
             // added island to the scene
             this._gas = new objects.Gas();
@@ -102,6 +100,11 @@ module scenes {
                     this.endOfGame();
                 }
                 else {
+                    // Play Points sound
+                    var audioFile = document.createElement("audio");
+                    audioFile.src = "../../Assets/audio/gastank_point.mp3";
+                    audioFile.play();
+                    // Increment points variable
                     this._points++;
                     // Update Points label
                     this.removeChild(this._pointsLabel);
@@ -123,6 +126,11 @@ module scenes {
                         this.endOfGame();
                     }
                     else {
+                        // Play car crash sound
+                        var audioFile = document.createElement("audio");
+                        audioFile.src = "../../Assets/audio/car_crash.mp3";
+                        audioFile.play();
+                        // Decrement car health variable
                         this._carHealth--;
                         // Update Car Health label
                         this.removeChild(this._carHealthLabel);
@@ -143,7 +151,7 @@ module scenes {
         // PRIVATE METHODS +++++++++++++++++++++++++++
         
         private endOfGame(): void {
-            console.log("Game Over!");
+            // console.log("Game Over!");
             this.removeChild(this._pointsLabel);
             this.removeChild(this._carHealthLabel);
             
@@ -169,8 +177,13 @@ module scenes {
         }
         
         private _restartPedalClick(event: createjs.MouseEvent): void {
-            // Switch to the MENU Scene
-            scene = config.Scene.MENU;
+            // Play Car Rev (restart) sound
+            var audioFile = document.createElement("audio");
+            audioFile.src = "../../Assets/audio/car_rev.mp3";
+            audioFile.play();
+            
+            // Reset to the PLAY Scene
+            scene = config.Scene.PLAY;
             changeScene();
         }
         
