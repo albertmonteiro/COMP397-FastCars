@@ -83,7 +83,7 @@ var scenes;
             this._carHealthLabel = new objects.Label(this._carHealth.toString(), "14px Consolas", "#000000", 570, 390, false);
             this._carHealthLabel.textAlign = "right";
             this.addChild(this._carHealthLabel);
-            console.log("Points: " + this._points + " ,Car Health: " + this._carHealth);
+            // console.log("Points: " + this._points + " ,Car Health: " + this._carHealth);
         };
         return Play;
     }(objects.Scene));

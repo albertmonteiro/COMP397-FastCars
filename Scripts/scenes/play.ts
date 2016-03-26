@@ -124,7 +124,7 @@ module scenes {
             this._carHealthLabel.textAlign = "right";
             this.addChild(this._carHealthLabel);
             
-            console.log("Points: " + this._points + " ,Car Health: " + this._carHealth);
+            // console.log("Points: " + this._points + " ,Car Health: " + this._carHealth);
         }
         
         
