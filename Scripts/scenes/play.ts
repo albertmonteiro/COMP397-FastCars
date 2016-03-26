@@ -98,10 +98,7 @@ module scenes {
             
             // Check if the collision is with a Gas tank
             if (this._collision.check(this._gas)) {
-                if (this._carHealth <= 0) {
-                    // Switch to the END Scene
-                    // scene = config.Scene.END;
-                    // changeScene();
+                if (this._carHealth <= 0 || this._points >= 1000) {
                     this.endOfGame();
                 }
                 else {
@@ -123,9 +120,6 @@ module scenes {
                 car.update();
                 if (this._collision.check(car)) {
                     if (this._carHealth <= 0) {
-                        // Switch to the END Scene
-                        // scene = config.Scene.END;
-                        // changeScene();
                         this.endOfGame();
                     }
                     else {
