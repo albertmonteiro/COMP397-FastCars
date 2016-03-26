@@ -5,7 +5,7 @@ module objects {
         
         // CONSTRUCTOR METHOD +++++++++++++++++++++++++
         constructor() {
-            super("ocean");
+            super("road");
             
            this._speed.x = 5; //ocean speed
            this._reset(0);

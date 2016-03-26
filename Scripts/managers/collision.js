@@ -25,7 +25,7 @@ var managers;
               the other object is less than the minimum distance */
             if (this.distance(startPoint, endPoint) < minimumDistance) {
                 // check if it's another car
-                if (object.name === "island") {
+                if (object.name === "gas") {
                     return true;
                 }
                 // check if it's a gas tank

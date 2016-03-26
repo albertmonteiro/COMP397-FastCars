@@ -11,7 +11,7 @@ var objects;
         // PRIVATE INSTANCE VARIABLES +++++++++++++++++
         // CONSTRUCTOR METHOD +++++++++++++++++++++++++
         function Road() {
-            _super.call(this, "ocean");
+            _super.call(this, "road");
             this._speed.x = 5; //ocean speed
             this._reset(0);
         }

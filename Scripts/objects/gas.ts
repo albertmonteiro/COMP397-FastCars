@@ -5,11 +5,11 @@ module objects {
         
         // CONSTRUCTOR METHOD +++++++++++++++++++++++++
         constructor() {
-            super("island");
+            super("gas");
             
            this._speed.x = 5; //island speed
            this._reset(this._rightBounds + 100);
-           this.name = "island";
+           this.name = "gas";
         }
         
         // PRIVATE METHODS ++++++++++++++++++++++++++++

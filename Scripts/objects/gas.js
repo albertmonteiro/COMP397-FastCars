@@ -11,10 +11,10 @@ var objects;
         // PRIVATE INSTANCE VARIABLES +++++++++++++++++
         // CONSTRUCTOR METHOD +++++++++++++++++++++++++
         function Gas() {
-            _super.call(this, "island");
+            _super.call(this, "gas");
             this._speed.x = 5; //island speed
             this._reset(this._rightBounds + 100);
-            this.name = "island";
+            this.name = "gas";
         }
         // PRIVATE METHODS ++++++++++++++++++++++++++++
         Gas.prototype._checkBounds = function (value) {
