@@ -1,6 +1,6 @@
 module objects {
     // OCEAN CLASS ++++++++++++++++++++++++++++++++++++
-    export class Ocean extends objects.GameObject {
+    export class Road extends objects.GameObject {
         // PRIVATE INSTANCE VARIABLES +++++++++++++++++
         
         // CONSTRUCTOR METHOD +++++++++++++++++++++++++

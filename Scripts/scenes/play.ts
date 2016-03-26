@@ -2,12 +2,12 @@
 module scenes {
     export class Play extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
-        private _ocean: objects.Ocean;
+        private _road: objects.Road;
         private _pointsBox: createjs.Bitmap;
         private _carHealthBox: createjs.Bitmap;
-        private _island: objects.Island;
-        private _clouds: objects.Cloud[];
-        private _cloudCount:number;
+        private _gas: objects.Gas;
+        private _cars: objects.Car[];
+        private _carCount:number;
         private _player: objects.Player;
         private _collision: managers.Collision;
         private _pointsLabel: objects.Label;
@@ -26,16 +26,16 @@ module scenes {
         // Start Method
         public start(): void {
             // Set Cloud Count
-            this._cloudCount = 4;
+            this._carCount = 4;
             this._points = 0;
             this._carHealth = 100;
             
             // Instantiate Cloud array
-            this._clouds = new Array<objects.Cloud>();
+            this._cars = new Array<objects.Car>();
             
             // added ocean to the scene
-            this._ocean = new objects.Ocean();
-            this.addChild(this._ocean);
+            this._road = new objects.Road();
+            this.addChild(this._road);
 
             // add the Points box the play scene
             console.log("Adding points box!");
@@ -48,17 +48,17 @@ module scenes {
             this.addChild(this._pointsBox);
             
             // added island to the scene
-            this._island = new objects.Island();
-            this.addChild(this._island);
+            this._gas = new objects.Gas();
+            this.addChild(this._gas);
 
             // added player to the scene
             this._player = new objects.Player();
             this.addChild(this._player);
             
-            //added clouds to the scene
-            for(var cloud:number = 0; cloud < this._cloudCount; cloud++) {
-                this._clouds[cloud] = new objects.Cloud();
-               this.addChild(this._clouds[cloud]);
+            //added cars to the scene
+            for(var car:number = 0; car < this._carCount; car++) {
+                this._cars[car] = new objects.Car();
+               this.addChild(this._cars[car]);
             }
             
             // Add Points label
@@ -88,13 +88,13 @@ module scenes {
 
         // PLAY Scene updates here
         public update(): void {
-            this._ocean.update();
-            this._island.update();
+            this._road.update();
+            this._gas.update();
             
             this._player.update();
             
             // Check if the collision is with a Gas tank
-            if (this._collision.check(this._island)) {
+            if (this._collision.check(this._gas)) {
                 this._points ++;
             }
             // Update Points label
@@ -108,9 +108,9 @@ module scenes {
             this.addChild(this._pointsLabel);
             
             // Check if the collision is with another car
-            this._clouds.forEach(cloud => {
-                    cloud.update();
-                    if (this._collision.check(cloud)) {
+            this._cars.forEach(car => {
+                    car.update();
+                    if (this._collision.check(car)) {
                         this._carHealth --;
                     }
                 });

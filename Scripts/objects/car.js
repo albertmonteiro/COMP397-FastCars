@@ -6,17 +6,17 @@ var __extends = (this && this.__extends) || function (d, b) {
 var objects;
 (function (objects) {
     // CLOUD CLASS ++++++++++++++++++++++++++++++++++++
-    var Cloud = (function (_super) {
-        __extends(Cloud, _super);
+    var Car = (function (_super) {
+        __extends(Car, _super);
         // PRIVATE INSTANCE VARIABLES +++++++++++++++++
         // CONSTRUCTOR METHOD +++++++++++++++++++++++++
-        function Cloud() {
+        function Car() {
             _super.call(this, "blue_car");
             this._reset(this._rightBounds + 300);
             this.name = "blue_car";
         }
         // PRIVATE METHODS ++++++++++++++++++++++++++++
-        Cloud.prototype._checkBounds = function (value) {
+        Car.prototype._checkBounds = function (value) {
             // check to see if the top of the cloud 
             // is outside the viewport         
             if (this.x <= value) {
@@ -24,7 +24,7 @@ var objects;
             }
         };
         // reset the cloud offscreen
-        Cloud.prototype._reset = function (value) {
+        Car.prototype._reset = function (value) {
             this._speed.x = Math.floor((Math.random() * 9) + 6);
             this.x = value;
             // this.y = 25;
@@ -45,13 +45,13 @@ var objects;
             }
         };
         // PUBLIC METHODS ++++++++++++++++++++++++++++++
-        Cloud.prototype.update = function () {
+        Car.prototype.update = function () {
             // scroll the cloud down the screen
             this.x -= this._speed.x;
             this._checkBounds(this._leftBounds - 100);
         };
-        return Cloud;
+        return Car;
     }(objects.GameObject));
-    objects.Cloud = Cloud;
+    objects.Car = Car;
 })(objects || (objects = {}));
-//# sourceMappingURL=cloud.js.map
+//# sourceMappingURL=car.js.map

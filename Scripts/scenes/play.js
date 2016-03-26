@@ -16,14 +16,14 @@ var scenes;
         // Start Method
         Play.prototype.start = function () {
             // Set Cloud Count
-            this._cloudCount = 4;
+            this._carCount = 4;
             this._points = 0;
             this._carHealth = 100;
             // Instantiate Cloud array
-            this._clouds = new Array();
+            this._cars = new Array();
             // added ocean to the scene
-            this._ocean = new objects.Ocean();
-            this.addChild(this._ocean);
+            this._road = new objects.Road();
+            this.addChild(this._road);
             // add the Points box the play scene
             console.log("Adding points box!");
             this._pointsBox = new objects.Button("points", 484, 5, false);
@@ -33,15 +33,15 @@ var scenes;
             this._pointsBox = new objects.Button("car_health", 483, 323, false);
             this.addChild(this._pointsBox);
             // added island to the scene
-            this._island = new objects.Island();
-            this.addChild(this._island);
+            this._gas = new objects.Gas();
+            this.addChild(this._gas);
             // added player to the scene
             this._player = new objects.Player();
             this.addChild(this._player);
-            //added clouds to the scene
-            for (var cloud = 0; cloud < this._cloudCount; cloud++) {
-                this._clouds[cloud] = new objects.Cloud();
-                this.addChild(this._clouds[cloud]);
+            //added cars to the scene
+            for (var car = 0; car < this._carCount; car++) {
+                this._cars[car] = new objects.Car();
+                this.addChild(this._cars[car]);
             }
             // Add Points label
             this._pointsLabel = new objects.Label(this._points.toString(), "14px Consolas", "#000000", 570, 70, false);
@@ -59,11 +59,11 @@ var scenes;
         // PLAY Scene updates here
         Play.prototype.update = function () {
             var _this = this;
-            this._ocean.update();
-            this._island.update();
+            this._road.update();
+            this._gas.update();
             this._player.update();
             // Check if the collision is with a Gas tank
-            if (this._collision.check(this._island)) {
+            if (this._collision.check(this._gas)) {
                 this._points++;
             }
             // Update Points label
@@ -72,9 +72,9 @@ var scenes;
             this._pointsLabel.textAlign = "right";
             this.addChild(this._pointsLabel);
             // Check if the collision is with another car
-            this._clouds.forEach(function (cloud) {
-                cloud.update();
-                if (_this._collision.check(cloud)) {
+            this._cars.forEach(function (car) {
+                car.update();
+                if (_this._collision.check(car)) {
                     _this._carHealth--;
                 }
             });

@@ -6,17 +6,17 @@ var __extends = (this && this.__extends) || function (d, b) {
 var objects;
 (function (objects) {
     // OCEAN CLASS ++++++++++++++++++++++++++++++++++++
-    var Ocean = (function (_super) {
-        __extends(Ocean, _super);
+    var Road = (function (_super) {
+        __extends(Road, _super);
         // PRIVATE INSTANCE VARIABLES +++++++++++++++++
         // CONSTRUCTOR METHOD +++++++++++++++++++++++++
-        function Ocean() {
+        function Road() {
             _super.call(this, "ocean");
             this._speed.x = 5; //ocean speed
             this._reset(0);
         }
         // PRIVATE METHODS ++++++++++++++++++++++++++++
-        Ocean.prototype._checkBounds = function (value) {
+        Road.prototype._checkBounds = function (value) {
             // check to see if the top of the ocean 
             // is met the top of the scene
             if (this.x <= value) {
@@ -24,17 +24,17 @@ var objects;
             }
         };
         // reset the ocean offscreen
-        Ocean.prototype._reset = function (value) {
+        Road.prototype._reset = function (value) {
             this.x = value;
         };
         // PUBLIC METHODS ++++++++++++++++++++++++++++++
-        Ocean.prototype.update = function () {
+        Road.prototype.update = function () {
             // scroll the ocean 5 px per frame
             this.x -= this._speed.x;
             this._checkBounds(-640);
         };
-        return Ocean;
+        return Road;
     }(objects.GameObject));
-    objects.Ocean = Ocean;
+    objects.Road = Road;
 })(objects || (objects = {}));
-//# sourceMappingURL=ocean.js.map
+//# sourceMappingURL=road.js.map
