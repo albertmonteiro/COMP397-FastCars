@@ -1,4 +1,4 @@
-// LEFT_CAVE SCENE
+// END SCENE
 module scenes {
     export class End extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
@@ -31,7 +31,6 @@ module scenes {
            
             // START_OVER Button event listener
             this._restartButton.on("click", this._restartButtonClick, this);
-
 
             // add this scene to the global stage container
             stage.addChild(this);

@@ -23,7 +23,10 @@ var assetData:objects.Asset[] = [
     {id: "plane", src:"../../Assets/images/plane.png"},
     {id: "gas", src:"../../Assets/images/gas_can.png"},
     {id: "cloud", src:"../../Assets/images/cloud.png"},
+    {id: "red_car", src:"../../Assets/images/red_car.png"},
     {id: "blue_car", src:"../../Assets/images/blue_car.png"},
+    {id: "green_car", src:"../../Assets/images/green_car.png"},
+    {id: "yellow_car", src:"../../Assets/images/yellow_car.png"},
     {id: "player_car", src:"../../Assets/images/player_car.png"},
     {id: "points", src:"../../Assets/images/points.png"},
     {id: "car_health", src:"../../Assets/images/car_health.png"},
@@ -39,9 +42,6 @@ function preload() {
 }
 
 function init(): void {
-    // Insert versino number to console log
-    console.log("Version:1.0");
-    
     // create a reference the HTML canvas Element
     canvas = document.getElementById("canvas");
     

@@ -1,14 +1,14 @@
 module objects {
     // CLOUD CLASS ++++++++++++++++++++++++++++++++++++
-    export class Car extends objects.GameObject {
+    export class Car3 extends objects.GameObject {
         // PRIVATE INSTANCE VARIABLES +++++++++++++++++
         
         // CONSTRUCTOR METHOD +++++++++++++++++++++++++
         constructor() {
-            super("red_car")
+            super("green_car")
             
            this._reset(this._rightBounds + 300);
-           this.name = "red_car";
+           this.name = "green_car";
         }
         
         // PRIVATE METHODS ++++++++++++++++++++++++++++

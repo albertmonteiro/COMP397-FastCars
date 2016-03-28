@@ -15,13 +15,11 @@ var scenes;
         // PUBLIC METHODS +++++++++++++++++++++
         // Start Method
         Play.prototype.start = function () {
-            // Set Cloud Count
-            this._carCount = 6;
+            // Set car Count, points, car health
+            this._carCount = 2;
             this._points = 0;
             this._carHealth = 20;
-            // Instantiate Cloud array
-            this._cars = new Array();
-            // added ocean to the scene
+            // added road to the scene
             this._road = new objects.Road();
             this.addChild(this._road);
             // add the Points box the play scene
@@ -30,16 +28,35 @@ var scenes;
             // add the Car Health box the play scene
             this._carHealthBox = new objects.Button("car_health", 483, 323, false);
             this.addChild(this._carHealthBox);
-            // added island to the scene
+            // added gas tank to the scene
             this._gas = new objects.Gas();
             this.addChild(this._gas);
             // added player to the scene
             this._player = new objects.Player();
             this.addChild(this._player);
-            //added cars to the scene
+            // Add red cars
+            this._cars = new Array();
             for (var car = 0; car < this._carCount; car++) {
                 this._cars[car] = new objects.Car();
                 this.addChild(this._cars[car]);
+            }
+            // Add blue cars
+            this._cars2 = new Array();
+            for (var car = 0; car < this._carCount; car++) {
+                this._cars2[car] = new objects.Car2();
+                this.addChild(this._cars2[car]);
+            }
+            // Add green cars
+            this._cars3 = new Array();
+            for (var car = 0; car < this._carCount; car++) {
+                this._cars3[car] = new objects.Car3();
+                this.addChild(this._cars3[car]);
+            }
+            // Add yellow cars
+            this._cars4 = new Array();
+            for (var car = 0; car < this._carCount; car++) {
+                this._cars4[car] = new objects.Car4();
+                this.addChild(this._cars4[car]);
             }
             // Add Points label
             this._pointsLabel = new objects.Label(this._points.toString(), "14px Consolas", "#000000", 570, 70, false);
@@ -62,7 +79,7 @@ var scenes;
             this._player.update();
             // Check if the collision is with a Gas tank
             if (this._collision.check(this._gas)) {
-                if (this._carHealth <= 0 || this._points >= 1000) {
+                if (this._carHealth <= 1 || this._points >= 1000) {
                     this.endOfGame();
                 }
                 else {
@@ -79,11 +96,77 @@ var scenes;
                     this.addChild(this._pointsLabel);
                 }
             }
-            // Check if the collision is with another car
+            // Check if the collision is with a red car
             this._cars.forEach(function (car) {
                 car.update();
                 if (_this._collision.check(car)) {
-                    if (_this._carHealth <= 0) {
+                    if (_this._carHealth <= 1) {
+                        _this.endOfGame();
+                    }
+                    else {
+                        // Play car crash sound
+                        var audioFile = document.createElement("audio");
+                        audioFile.src = "../../Assets/audio/car_crash.mp3";
+                        audioFile.play();
+                        // Decrement car health variable
+                        _this._carHealth--;
+                        // Update Car Health label
+                        _this.removeChild(_this._carHealthLabel);
+                        _this._carHealthLabel = new objects.Label(_this._carHealth.toString(), "14px Consolas", "#000000", 570, 390, false);
+                        _this._carHealthLabel.textAlign = "right";
+                        _this.addChild(_this._carHealthLabel);
+                    }
+                }
+            });
+            // Check if the collision is with a blue car
+            this._cars2.forEach(function (car) {
+                car.update();
+                if (_this._collision.check(car)) {
+                    if (_this._carHealth <= 1) {
+                        _this.endOfGame();
+                    }
+                    else {
+                        // Play car crash sound
+                        var audioFile = document.createElement("audio");
+                        audioFile.src = "../../Assets/audio/car_crash.mp3";
+                        audioFile.play();
+                        // Decrement car health variable
+                        _this._carHealth--;
+                        // Update Car Health label
+                        _this.removeChild(_this._carHealthLabel);
+                        _this._carHealthLabel = new objects.Label(_this._carHealth.toString(), "14px Consolas", "#000000", 570, 390, false);
+                        _this._carHealthLabel.textAlign = "right";
+                        _this.addChild(_this._carHealthLabel);
+                    }
+                }
+            });
+            // Check if the collision is with a green car
+            this._cars3.forEach(function (car) {
+                car.update();
+                if (_this._collision.check(car)) {
+                    if (_this._carHealth <= 1) {
+                        _this.endOfGame();
+                    }
+                    else {
+                        // Play car crash sound
+                        var audioFile = document.createElement("audio");
+                        audioFile.src = "../../Assets/audio/car_crash.mp3";
+                        audioFile.play();
+                        // Decrement car health variable
+                        _this._carHealth--;
+                        // Update Car Health label
+                        _this.removeChild(_this._carHealthLabel);
+                        _this._carHealthLabel = new objects.Label(_this._carHealth.toString(), "14px Consolas", "#000000", 570, 390, false);
+                        _this._carHealthLabel.textAlign = "right";
+                        _this.addChild(_this._carHealthLabel);
+                    }
+                }
+            });
+            // Check if the collision is with a blue car
+            this._cars4.forEach(function (car) {
+                car.update();
+                if (_this._collision.check(car)) {
+                    if (_this._carHealth <= 1) {
                         _this.endOfGame();
                     }
                     else {

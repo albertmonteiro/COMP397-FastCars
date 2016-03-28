@@ -11,9 +11,9 @@ var objects;
         // PRIVATE INSTANCE VARIABLES +++++++++++++++++
         // CONSTRUCTOR METHOD +++++++++++++++++++++++++
         function Car() {
-            _super.call(this, "blue_car");
+            _super.call(this, "red_car");
             this._reset(this._rightBounds + 300);
-            this.name = "blue_car";
+            this.name = "red_car";
         }
         // PRIVATE METHODS ++++++++++++++++++++++++++++
         Car.prototype._checkBounds = function (value) {

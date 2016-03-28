@@ -34,15 +34,16 @@ module managers {
               the other object is less than the minimum distance */
             if(this.distance(startPoint, endPoint) < minimumDistance) {
                 
-                // check if it's another car
+                // check if it's a gas tank
                 if(object.name === "gas") {
                     // console.log("Collision with gas tank!");
                     return true;
                 }
                 
-                // check if it's a gas tank
-                if(object.name === "blue_car") {
-                    // console.log("Collision with blue car!");
+                // check if it's an enemy car
+                if(object.name === "red_car" || object.name === "blue_car"
+                    || object.name === "green_car" || object.name === "yellow_car") {
+                    // console.log("Collision with a car!");
                     return true;
                 }
             }
