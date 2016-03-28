@@ -18,11 +18,6 @@ var scenes;
             // adding background
             this._backgroundImage = new createjs.Bitmap(assets.getResult("road"));
             this.addChild(this._backgroundImage);
-            // Play Background music
-            var audioFile = document.createElement("audio");
-            audioFile.src = "../../Assets/audio/background.mp3";
-            audioFile.loop = true;
-            audioFile.play();
             //Add Menu Label
             this._menuLabel = new objects.Label("ARE YOU READY?", "60px Consolas", "#ABABAB", config.Screen.CENTER_X, config.Screen.CENTER_Y - 75, true);
             this.addChild(this._menuLabel);
@@ -44,11 +39,12 @@ var scenes;
             var audioFile = document.createElement("audio");
             audioFile.src = "../../Assets/audio/car_start.mp3";
             audioFile.play();
-            // Play Background music 
-            // var audioFile = document.createElement("audio");
-            // audioFile.src = "../../Assets/audio/background.mp3";
-            // audioFile.loop = true;
-            // audioFile.play();
+            // Play Background music
+            console.log("Background music being added from start button click handler");
+            var audioFile = document.createElement("audio");
+            audioFile.src = "../../Assets/audio/background.mp3";
+            audioFile.loop = true;
+            audioFile.play();
             // Switch to the PLAY Scene
             scene = config.Scene.PLAY;
             changeScene();
