@@ -16,7 +16,7 @@ var scenes;
         // Start Method
         Play.prototype.start = function () {
             // Set Cloud Count
-            this._carCount = 4;
+            this._carCount = 6;
             this._points = 0;
             this._carHealth = 20;
             // Instantiate Cloud array

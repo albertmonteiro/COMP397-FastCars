@@ -17,36 +17,34 @@ var objects;
         }
         // PRIVATE METHODS ++++++++++++++++++++++++++++
         Car.prototype._checkBounds = function (value) {
-            // check to see if the top of the cloud 
+            // check to see if the top of the car 
             // is outside the viewport         
             if (this.x <= value) {
                 this._reset(this._rightBounds + 100);
             }
         };
-        // reset the cloud offscreen
+        // reset the car offscreen
         Car.prototype._reset = function (value) {
-            this._speed.x = Math.floor((Math.random() * 9) + 6);
+            // Generate random speed for car
+            this._speed.x = Math.floor((Math.random() * 12) + 6);
+            // Generate X and Y coordinates for car
             this.x = value;
-            // this.y = 25;
-            var temp = Math.floor((Math.random() * 4) + 1);
-            switch (temp) {
-                case 1:
-                    this.y = 42;
-                    break;
-                case 2:
-                    this.y = 165;
-                    break;
-                case 3:
-                    this.y = 288;
-                    break;
-                case 4:
-                    this.y = 405;
-                    break;
-            }
+            var temp = Math.floor((Math.random() * 445) + 1);
+            this.y = temp;
+            // switch (temp) {
+            //         case 1: this.y = 42;
+            //             break;
+            //         case 2: this.y = 165;
+            //             break;
+            //         case 3: this.y = 288;
+            //             break;
+            //         case 4: this.y = 405;
+            //             break;
+            // }
         };
         // PUBLIC METHODS ++++++++++++++++++++++++++++++
         Car.prototype.update = function () {
-            // scroll the cloud down the screen
+            // scroll the car down the screen
             this.x -= this._speed.x;
             this._checkBounds(this._leftBounds - 100);
         };

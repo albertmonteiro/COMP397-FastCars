@@ -33,6 +33,8 @@ function preload() {
     assets.loadManifest(assetData);
 }
 function init() {
+    // Insert versino number to console log
+    console.log("Version:1.0");
     // create a reference the HTML canvas Element
     canvas = document.getElementById("canvas");
     // create our main display list container
@@ -78,7 +80,7 @@ function changeScene() {
             stage.removeAllChildren();
             menu = new scenes.Menu();
             currentScene = menu;
-            console.log("Starting MENU Scene");
+            console.log("Starting MENU Scene v:1.0");
             break;
         case config.Scene.PLAY:
             // show the PLAY scene

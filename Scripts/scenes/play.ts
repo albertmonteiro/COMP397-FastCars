@@ -29,7 +29,7 @@ module scenes {
         // Start Method
         public start(): void {
             // Set Cloud Count
-            this._carCount = 4;
+            this._carCount = 6;
             this._points = 0;
             this._carHealth = 20;
             

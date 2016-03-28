@@ -40,7 +40,6 @@ var scenes;
             audioFile.src = "../../Assets/audio/car_start.mp3";
             audioFile.play();
             // Play Background music
-            console.log("Background music being added from start button click handler");
             var audioFile = document.createElement("audio");
             audioFile.src = "../../Assets/audio/background.mp3";
             audioFile.loop = true;
